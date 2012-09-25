@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all    
+    @tags = Article.tag_counts_on(:tags)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +80,11 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url }
       format.json { head :no_content }
     end
+  end
+
+  def tag
+    @articles = Article.tagged_with(params[:id])
+    @tags = Article.tag_counts_on(:tags)
+    render :action => 'index'
   end
 end

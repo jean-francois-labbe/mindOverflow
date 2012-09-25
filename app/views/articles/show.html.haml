@@ -1,0 +1,17 @@
+%p#notice= notice
+%p
+  %b Title:
+  = @article.title
+%p
+  %b Body:
+  = @article.body
+%p
+  %b Tags:
+  - @article.tag_list.each do |tag|
+    %span
+      %i.icon-tag
+        = tag
+        
+= link_to 'Edit', edit_article_path(@article)
+|
+\#{link_to 'Back', articles_path}
