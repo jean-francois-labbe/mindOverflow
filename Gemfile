@@ -40,3 +40,4 @@ gem 'jquery-rails'
 gem 'haml-rails'
 
 gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'turbolinks'
