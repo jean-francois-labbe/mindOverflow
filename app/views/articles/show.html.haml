@@ -1,10 +1,12 @@
-%p#notice= notice
 %p
   %b Title:
   = @article.title
 %p
   %b Body:
   = @article.body
+%p
+  %b Posted by:
+  = @article.user.nickname
 %p
   %b Tags:
   - @article.tag_list.each do |tag|

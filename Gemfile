@@ -40,4 +40,13 @@ gem 'jquery-rails'
 gem 'haml-rails'
 
 gem 'acts-as-taggable-on', '~> 2.3.1'
+
 gem 'turbolinks'
+
+gem 'devise'
+
+group :development do
+  gem 'sextant'
+end
+
+gem 'rack-mini-profiler'

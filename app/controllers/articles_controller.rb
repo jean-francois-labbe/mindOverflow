@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /articles
   # GET /articles.json
   def index
@@ -42,6 +44,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save

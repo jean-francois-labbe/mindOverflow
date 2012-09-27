@@ -4,6 +4,7 @@
     %th Title
     %th Body
     %th Tags
+    %th Posted by
     %th
     %th
     %th
@@ -12,6 +13,7 @@
       %td= article.title
       %td= article.body
       %td= article.tag_list.join(", ")
+      %td= article.user.nickname
       %td= link_to 'Show', article
       %td= link_to 'Edit', edit_article_path(article)
       %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
