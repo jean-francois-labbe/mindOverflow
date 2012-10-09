@@ -1,4 +1,3 @@
-%h1 Articles
 %table
   %tr
     %th Title
@@ -9,7 +8,7 @@
     %th
     %th
   - @articles.each do |article|
-    %tr
+    %tr{class: "foo"}
       %td= article.title
       %td= article.body
       %td= article.tag_list.join(", ")

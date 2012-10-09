@@ -8,9 +8,15 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require bootstrap/loader
  *= require_self
  *= require_tree .
  */
+body { 
+    width: 60%;
+    align: center;
+    margin:0 auto; /* for the rest */
+ }
 
 .css1 { font-size: 1.0em; }
 .css2 { font-size: 1.2em; }

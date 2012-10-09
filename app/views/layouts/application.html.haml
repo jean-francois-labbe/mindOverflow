@@ -6,6 +6,19 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+  - if alert || notice
+    - text = alert || notice
+    %div
+      %center
+        %h4= text
+  .navbar
+    .navbar-inner
+      %a.brand{:href => "#"} MindOverflow
+      %ul.nav
+        %li.active
+          = link_to 'Articles', articles_path
+      %ul.nav.pull-right
+        %li.pull-right
+          = current_user.nickname
+        
+  = yield
