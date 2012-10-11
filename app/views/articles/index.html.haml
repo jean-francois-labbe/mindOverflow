@@ -1,27 +1,31 @@
-%table
-  %tr
-    %th Title
-    %th Body
-    %th Tags
-    %th Posted by
-    %th
-    %th
-    %th
-  - @articles.each do |article|
-    %tr{class: "foo"}
-      %td= article.title
-      %td= article.body
-      %td= article.tag_list.join(", ")
-      %td= article.user.nickname
-      %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
+.articles
+  .posts
+    %table
+      %tr
+        %th Title
+        %th Body
+        %th Tags
+        %th Posted by
+        %th
+        %th
+        %th
+      - @articles.each do |article|
+        %tr{class: "foo"}
+          %td= article.title
+          %td= article.body
+          %td= article.tag_list.join(", ")
+          %td= article.user.nickname
+          %td= link_to 'Show', article
+          %td= link_to 'Edit', edit_article_path(article)
+          %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
+    %br/
 
-%p
-  - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-    = link_to tag.name, {action: :tag, :id => tag.name}, :class => css_class 
+  .right_side
+    .action
+      = link_to 'New Article', new_article_path
+    .tags
+      %p
+        - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+          = link_to tag.name, {action: :tag, :id => tag.name}, :class => css_class 
 
-= link_to 'All Articles', articles_path
 
-= link_to 'New Article', new_article_path

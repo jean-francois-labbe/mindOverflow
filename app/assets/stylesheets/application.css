@@ -12,11 +12,11 @@
  *= require_self
  *= require_tree .
  */
-body { 
+/*body { 
     width: 60%;
     align: center;
     margin:0 auto; /* for the rest */
- }
+ }*/
 
 .css1 { font-size: 1.0em; }
 .css2 { font-size: 1.2em; }

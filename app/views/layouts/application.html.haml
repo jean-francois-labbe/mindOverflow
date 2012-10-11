@@ -6,19 +6,23 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-  - if alert || notice
-    - text = alert || notice
-    %div
-      %center
-        %h4= text
-  .navbar
-    .navbar-inner
-      %a.brand{:href => "#"} MindOverflow
-      %ul.nav
-        %li.active
-          = link_to 'Articles', articles_path
-      %ul.nav.pull-right
-        %li.pull-right
-          = current_user.nickname
-        
+  - if user_signed_in?  
+    - if alert || notice
+      - text = alert || notice
+      %div
+        %center
+          %h4= text
+    %header
+      .navbar
+        .navbar-inner    
+          = link_to 'MindOverflow', root_path, {:class => 'brand'}
+          %ul.nav
+            %li.active
+              = link_to 'Articles', articles_path
+          %ul.nav.pull-right
+            %li.pull-right
+              = link_to current_user.nickname, user_path(current_user)
+            %li.pull-right
+              = link_to "Sign out", destroy_user_session_path, {:method => :delete}
+
   = yield
