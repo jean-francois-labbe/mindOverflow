@@ -5,7 +5,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body
+  %body.container
   - if user_signed_in?  
     - if alert || notice
       - text = alert || notice
@@ -26,3 +26,4 @@
               = link_to "Sign out", destroy_user_session_path, {:method => :delete}
 
   = yield
+  = debug(params) if Rails.env.development?
