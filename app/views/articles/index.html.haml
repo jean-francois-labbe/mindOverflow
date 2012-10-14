@@ -1,31 +1,31 @@
-.articles
+.articles.show-grid
   .posts
-    %table
-      %tr
-        %th Title
-        %th Body
-        %th Tags
-        %th Posted by
-        %th
-        %th
-        %th
+    .posts_border
       - @articles.each do |article|
-        %tr{class: "foo"}
-          %td= article.title
-          %td= article.body
-          %td= article.tag_list.join(", ")
-          %td= article.user.nickname
-          %td= link_to 'Show', article
-          %td= link_to 'Edit', edit_article_path(article)
-          %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
-    %br/
+        .post      
+          .content
+            %h4.title
+              = link_to truncate(article.title,:length => 60, :separator =>' '), article
+              %span.actions
+                %span.edit
+                  = link_to '<i class="icon-edit" ></i>'.html_safe, edit_article_path(article)
+                %span.destroy
+                  = link_to '<i class="icon-remove"></i>'.html_safe, article, method: :delete, data: { confirm: 'Are you sure?' }
+            .body
+              = truncate(article.body,:length => 60, :separator =>' ')
+            .tags
+              - article.tag_list.each do |tag|
+                %span.tag
+                  = tag
+          .writer
+            = article.user.nickname        
+        %br/
 
   .right_side
     .action
       = link_to 'New Article', new_article_path
-    .tags
-      %p
-        - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-          = link_to tag.name, {action: :tag, :id => tag.name}, :class => css_class 
+    .cloud
+      - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+        = link_to tag.name, {action: :tag, :id => tag.name}, :class => css_class + " tag tag-cloud"
 
 
