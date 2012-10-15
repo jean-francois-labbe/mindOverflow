@@ -1,0 +1,76 @@
+@import "twitter/bootstrap";
+@import "twitter/bootstrap/mixins";
+@import "twitter/bootstrap/labels-badges";
+
+.articles{
+    .makeRow();
+}
+
+.right_side{
+    .makeColumn(4,0);
+    .action{
+	margin-bottom: 10px;
+    }
+    .tag{
+    }
+}
+
+.posts{
+    .makeColumn(8,0);
+    .posts_border{
+	border-right-style: solid;
+	border-color: #D4D4D4;
+	border-width: 1px;
+    }
+    .post{
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	border-bottom-style: solid;
+	border-color: #D4D4D4;
+	border-width: 1px;
+	.makeRow();
+	.content{
+	    .makeColumn(7,0);
+	    .title{
+		font-weight: bold;
+		.actions{
+		    vertical-align: middle;
+		}
+	    }
+	}
+	.writer{
+	    .makeColumn(1,0);
+	    line-height: 20px;
+	    text-align: center;
+	    width:0;
+	}
+    }
+}
+
+.tag{
+    .label;
+    background-color: @infoText;
+    margin-right: 5px;
+}
+
+.cloud{
+    padding:2px;
+    line-height: 3em;
+    text-align: center;
+    margin: 0;
+}
+
+.tag-count{
+    font-weight: normal;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.cloud tag-cloud{
+    padding: 0px;
+}
+
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.8em; }
