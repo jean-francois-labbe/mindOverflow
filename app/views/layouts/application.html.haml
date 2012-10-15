@@ -21,9 +21,11 @@
               = link_to 'Articles', articles_path
           %ul.nav.pull-right
             %li.pull-right
-              = link_to current_user.nickname, user_path(current_user)
+              = link_to user_path(current_user) do
+                = image_tag avatar_url(current_user,24)
+                = current_user.nickname
             %li.pull-right
               = link_to "Sign out", destroy_user_session_path, {:method => :delete}
 
   = yield
-  = debug(params) if Rails.env.development?
+/  = debug(params) if Rails.env.development?

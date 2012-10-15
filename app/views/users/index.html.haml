@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th Avatar
     %th First name
     %th Last name
     %th Nickname
@@ -12,6 +13,7 @@
 
   - @users.each do |user|
     %tr
+      %td= image_tag avatar_url(user,48)
       %td= user.first_name
       %td= user.last_name
       %td= user.nickname

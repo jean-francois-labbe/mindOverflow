@@ -18,8 +18,11 @@
                 %span.tag
                   = tag
           .writer
-            = article.user.nickname        
-        %br/
+            .align-writer
+              .avatar
+                = image_tag avatar_url(article.user,32)
+              .user_name
+                = article.user.nickname        
 
   .right_side
     .action
