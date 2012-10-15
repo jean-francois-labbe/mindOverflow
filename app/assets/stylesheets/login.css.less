@@ -1,6 +1,7 @@
 @import "twitter/bootstrap/variables";
 @import "twitter/bootstrap/forms";
 @import "twitter/bootstrap/mixins";
+@import "twitter/bootstrap/buttons";
 
 .login_page{
     .makeRow();
@@ -8,4 +9,24 @@
 
 .sign_in{
     .makeColumn(4,3);
+}
+
+div.remember label{
+    float:right;
+}
+
+.input.checkbox{
+    float:left;
+}
+
+.button{
+    .btn;
+}
+
+.sign{
+    .btn-primary;
+}
+.sign-up{
+    .btn;
+    .btn-success;
 }
