@@ -52,3 +52,5 @@ group :development do
 end
 
 gem 'rack-mini-profiler'
+
+gem 'will_paginate'

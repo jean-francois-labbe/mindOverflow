@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all    
+#    @articles = Article.all    
+    @articles = Article.paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags)
 
     respond_to do |format|
