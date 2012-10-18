@@ -54,3 +54,5 @@ end
 gem 'rack-mini-profiler'
 
 gem 'will_paginate'
+
+gem 'acts_as_favorite'
