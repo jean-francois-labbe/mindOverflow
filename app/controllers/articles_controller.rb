@@ -87,8 +87,8 @@ class ArticlesController < ApplicationController
   end
 
   def tag
-    @articles = Article.tagged_with(params[:id])
-    @tags = Article.tag_counts_on(:tags)
+    @articles = Article.tagged_with(params[:id]).paginate(:page => params[:page])
+     @tags = Article.tag_counts_on(:tags)
     render :action => 'index'
   end
 end

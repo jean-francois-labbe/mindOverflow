@@ -3,16 +3,16 @@
   = @article.title
 %p
   %b Body:
-  = @article.body
+  = auto_link(@article.body, :html => { :target => '_blank' })
+ 
 %p
   %b Posted by:
   = @article.user.nickname
 %p
   %b Tags:
   - @article.tag_list.each do |tag|
-    %span
-      %i.icon-tag
-        = tag
+    %span.tag
+      = tag
         
 = link_to 'Edit', edit_article_path(@article)
 |

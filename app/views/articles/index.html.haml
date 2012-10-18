@@ -12,7 +12,7 @@
                 %span.destroy
                   = link_to '<i class="icon-remove"></i>'.html_safe, article, method: :delete, data: { confirm: 'Are you sure?' }
             .body
-              = truncate(article.body,:length => 60, :separator =>' ')
+              = auto_link(truncate(article.body,:length => 60, :separator =>' '))
             .tags
               - article.tag_list.each do |tag|
                 %span.tag

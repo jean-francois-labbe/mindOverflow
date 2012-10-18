@@ -54,3 +54,7 @@ end
 gem 'rack-mini-profiler'
 
 gem 'will_paginate'
+
+gem 'rails_autolink'
+
+
