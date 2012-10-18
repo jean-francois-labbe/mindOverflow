@@ -16,7 +16,8 @@
             .tags
               - article.tag_list.each do |tag|
                 %span.tag
-                  = tag
+                  = link_to tag , {action: :tag, :id => tag}, :class => "tag tag-list"
+
           .writer
             .align-writer
               .avatar

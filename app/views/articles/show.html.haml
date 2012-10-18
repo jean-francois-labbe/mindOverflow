@@ -11,9 +11,9 @@
 %p
   %b Tags:
   - @article.tag_list.each do |tag|
-    %span.tag
-      = tag
-        
+    %span
+      = link_to tag , {action: :tag, :id => tag}, :class => "tag tag-list"
+
 = link_to 'Edit', edit_article_path(@article)
 |
 \#{link_to 'Back', articles_path}

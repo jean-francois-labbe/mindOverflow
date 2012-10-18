@@ -15,6 +15,14 @@
     }
 }
 
+.new-article{
+    .makeRow();
+}
+
+.new-article-form{
+    .makeColumn(8,4)
+}
+
 .posts{
     .makeColumn(8,0);
     .post{
@@ -52,10 +60,22 @@
     }
 }
 
+a:hover{
+    text-decoration: none;
+    color: orange;
+}
+
+
 .tag{
     .label;
     background-color: @infoText;
     margin-right: 5px;
+    font-size: 1.0em;
+}
+
+.tag:hover{
+    text-decoration: none;
+    color: orange;
 }
 
 .cloud{

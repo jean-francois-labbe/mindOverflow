@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-#    @articles = Article.all    
     @articles = Article.paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags)
 
@@ -88,7 +87,7 @@ class ArticlesController < ApplicationController
 
   def tag
     @articles = Article.tagged_with(params[:id]).paginate(:page => params[:page])
-     @tags = Article.tag_counts_on(:tags)
+    @tags = Article.tag_counts_on(:tags)
     render :action => 'index'
   end
 end
