@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title("My great blog!")
+  feed.title("MindOverflow")
   feed.updated(@articles[0].created_at) if @articles.length > 0
   @articles.each do |article|
     feed.entry(article) do |entry|
