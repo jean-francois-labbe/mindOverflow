@@ -49,11 +49,10 @@ gem 'devise'
 
 group :development do
   gem 'sextant'
-  gem 'rails-footnotes'
   gem "rails_best_practices"
+  gem 'rack-mini-profiler'
 end
 
-gem 'rack-mini-profiler'
 
 gem 'will_paginate'
 
