@@ -61,3 +61,5 @@ gem 'rails_autolink'
 gem 'acts_as_favorite'
 
 gem 'paperclip'
+
+gem 'cancan'

@@ -35,6 +35,7 @@ GEM
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
     builder (3.0.3)
+    cancan (1.6.8)
     cocaine (0.4.0)
     code_analyzer (0.2.0)
       sexp_processor
@@ -108,8 +109,6 @@ GEM
       activesupport (= 3.2.8)
       bundler (~> 1.0)
       railties (= 3.2.8)
-    rails-footnotes (3.7.8)
-      rails (>= 3.0.0)
     rails_autolink (1.0.9)
       rails (~> 3.1)
     rails_best_practices (1.11.1)
@@ -166,6 +165,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 2.3.1)
   acts_as_favorite
+  cancan
   coffee-rails (~> 3.2.1)
   devise
   haml-rails
@@ -174,7 +174,6 @@ DEPENDENCIES
   paperclip
   rack-mini-profiler
   rails (= 3.2.8)
-  rails-footnotes
   rails_autolink
   rails_best_practices
   sass-rails (~> 3.2.3)
