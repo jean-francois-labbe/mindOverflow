@@ -24,7 +24,8 @@
                 = image_tag avatar_url(article.user,32)
               .user_name
                 = article.user_nickname
-
+              .posted_at
+                = distance_of_time_in_words_to_now(article.created_at)
     = will_paginate @articles
   .right_side
     .action

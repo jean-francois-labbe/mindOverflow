@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.paginate(:page => params[:page])
-    @tags = Article.tag_counts_on(:tags)
+    @tags = Article.tag_counts_on(:tags,:limit => 100, :order => "name desc")
 
     respond_to do |format|
       format.html # index.html.erb
