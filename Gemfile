@@ -16,7 +16,7 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
-  
+
   gem 'less-rails-bootstrap'
 
   gem 'uglifier', '>= 1.0.3'
@@ -49,6 +49,8 @@ gem 'devise'
 
 group :development do
   gem 'sextant'
+  gem 'rails-footnotes'
+  gem "rails_best_practices"
 end
 
 gem 'rack-mini-profiler'
