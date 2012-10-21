@@ -2,7 +2,7 @@
   .posts
     .posts_border
       - @articles.each do |article|
-        .post      
+        .post
           .content
             %h4.title
               = link_to truncate(article.title,:length => 60, :separator =>' '), article
@@ -23,7 +23,7 @@
               .avatar
                 = image_tag avatar_url(article.user,32)
               .user_name
-                = article.user.nickname        
+                = article.user.nickname
 
     = will_paginate @articles
   .right_side
