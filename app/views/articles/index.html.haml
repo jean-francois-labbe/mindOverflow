@@ -23,7 +23,7 @@
               .avatar
                 = image_tag avatar_url(article.user,32)
               .user_name
-                = article.user.nickname
+                = article.user_nickname
 
     = will_paginate @articles
   .right_side

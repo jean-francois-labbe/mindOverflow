@@ -6,7 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body.container
-  - if user_signed_in?  
+  - if user_signed_in?
     - if alert || notice
       - text = alert || notice
       %div
@@ -14,7 +14,7 @@
           %h4= text
     %header
       .navbar
-        .navbar-inner    
+        .navbar-inner
           = link_to 'MindOverflow', root_path, {:class => 'brand'}
           %ul.nav
             %li.active

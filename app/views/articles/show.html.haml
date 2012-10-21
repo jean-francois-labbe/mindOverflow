@@ -4,10 +4,10 @@
 %p
   %b Body:
   = auto_link(@article.body, :html => { :target => '_blank' })
- 
+
 %p
   %b Posted by:
-  = @article.user.nickname
+  = @article.user_nickname
 
 %p
   - if @article.image?
