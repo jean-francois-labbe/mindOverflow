@@ -47,6 +47,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
+    @article.title = params[:article][:title].capitalize
     @article.user = current_user
 
     respond_to do |format|

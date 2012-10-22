@@ -1,6 +1,5 @@
-%p
-  %b Title:
-  = @article.title
+%h2
+  = @article.title.capitalize
 %p
   %b Body:
   = auto_link(@article.body, :html => { :target => '_blank' })
