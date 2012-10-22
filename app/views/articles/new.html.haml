@@ -1,5 +1,5 @@
 .new-article
   .new-article-form
     %h1 New article
-    = render 'form', :article => @article
+    = render 'form', :article => @article,  :body_size => 2
     = link_to 'Back', articles_path

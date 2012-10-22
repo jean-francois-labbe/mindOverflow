@@ -6,6 +6,7 @@ MindOverflow::Application.routes.draw do
   resources :articles do
     collection do
       get :tag
+      get :autocomplete_tag_name
     end
   end
 

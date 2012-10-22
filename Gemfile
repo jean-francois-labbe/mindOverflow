@@ -63,3 +63,5 @@ gem 'acts_as_favorite'
 gem 'paperclip'
 
 gem 'cancan'
+gem "jquery-rails"
+gem 'rails3-jquery-autocomplete'

@@ -21,6 +21,6 @@
     = f.file_field :image
   .field
     = f.label :Tags
-    = f.text_field :tag_list
+    = f.autocomplete_field :tag_list, autocomplete_tag_name_articles_path, :"data-delimiter" => ', '
   .actions
     = f.submit

@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!
-
+  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
   # GET /articles
   # GET /articles.json
   def index
