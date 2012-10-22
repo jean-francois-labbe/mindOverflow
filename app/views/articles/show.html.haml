@@ -12,6 +12,7 @@
 %p
   - if @article.image?
     = image_tag @article.image.url(:medium)
+    = @article.image_file_name
 %p
   %b Tags:
   - @article.tag_list.each do |tag|

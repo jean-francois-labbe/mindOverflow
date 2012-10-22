@@ -1,19 +1,15 @@
 %p
-  %b First name:
   = @user.first_name
-%p
-  %b Last name:
   = @user.last_name
-%p
-  %b Nickname:
+  %i
+    Known as:
   = @user.nickname
 %p
   %b Email:
   = @user.email
-%p
-  %b Role:
-  = @user.role
 
 = link_to 'Edit', edit_user_path(@user)
 \|
 = link_to 'Back', users_path
+
+= render 'articles/list_articles', :articles => @articles
