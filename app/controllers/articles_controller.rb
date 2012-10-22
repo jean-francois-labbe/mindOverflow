@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
+
   # GET /articles
   # GET /articles.json
   def index
@@ -50,7 +51,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to articles_url, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
         format.html { render "new" }
@@ -66,7 +67,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to articles_url, notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render "edit" }
