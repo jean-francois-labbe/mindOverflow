@@ -11,5 +11,7 @@
 = link_to 'Edit', edit_user_path(@user)
 \|
 = link_to 'Back', users_path
-
+%br/
+%p
+  Published articles
 = render 'articles/list_articles', :articles => @articles

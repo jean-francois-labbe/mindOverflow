@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
   belongs_to :user
   delegate :nickname, :to => :user, :prefix => true
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  validates :title, :presence => true
+  validates :body, :presence => true
 
   self.per_page = 5
 end

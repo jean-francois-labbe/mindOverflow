@@ -4,8 +4,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.paginate(:page => params[:page])
+    @articles = Article.order("created_at DESC").paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags,:limit => 100, :order => "name desc")
+    @article = Article.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -89,6 +90,8 @@ class ArticlesController < ApplicationController
   def tag
     @articles = Article.tagged_with(params[:id]).paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags)
+    @article = Article.new
+
     render 'index'
   end
 end
