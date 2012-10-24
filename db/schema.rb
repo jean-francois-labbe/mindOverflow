@@ -11,22 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022173429) do
+ActiveRecord::Schema.define(:version => 20121021174031) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "attach_file_name"
-    t.string   "attach_content_type"
-    t.integer  "attach_file_size"
-    t.datetime "attach_updated_at"
   end
 
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"

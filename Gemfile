@@ -22,6 +22,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  gem 'faker'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -63,5 +67,5 @@ gem 'acts_as_favorite'
 gem 'paperclip'
 
 gem 'cancan'
-gem "jquery-rails"
+gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'

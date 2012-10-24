@@ -8,11 +8,9 @@
         - article.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label :title
-    = f.text_field :title
+    = f.text_field :title,:placeholder => "Title"
   .field
-    = f.label :body
-    = f.text_area :body, :rows => body_size
+    = f.text_area :body, :rows => body_size,:placeholder => "Body"
   .field
     - if article.image_file_name
       = image_tag article.image.url(:medium)
@@ -20,7 +18,6 @@
     = f.label :image, "Attach a New Image"
     = f.file_field :image
   .field
-    = f.label :Tags
-    = f.autocomplete_field :tag_list, autocomplete_tag_name_articles_path, :"data-delimiter" => ', '
+    = f.autocomplete_field :tag_list, autocomplete_tag_name_articles_path, :"data-delimiter" => ', ',:placeholder => "Tags"
   .actions
     = f.submit
