@@ -3,7 +3,9 @@
     = render 'list_articles', :articles => @articles
   .right_side
     .new_article
-      = render 'form', :article => @article, :body_size => 2
+      %h4
+        Create an article
+        = render 'form', :article => @article, :body_size => 2
     .cloud
       - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
         = link_to "#{tag.name.capitalize} <span class='tag-count'> (#{tag.taggings.count})</span>".html_safe, {action: :tag, :id => tag.name}, :class => css_class + " tag"
