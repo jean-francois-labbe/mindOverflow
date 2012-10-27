@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  acts_as_taggable
+  acts_as_taggable_on :tags
   attr_accessible :body, :title, :tag_list, :image, :user_id
   belongs_to :user
   delegate :nickname, :to => :user, :prefix => true

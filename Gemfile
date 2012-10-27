@@ -64,10 +64,14 @@ gem 'will_paginate'
 
 gem 'rails_autolink'
 
-gem 'acts_as_favorite'
+gem 'acts_as_favable'
+
+gem 'acts_as_rateable'
 
 gem 'paperclip'
 
 gem 'cancan'
 gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'
+
+gem 'newrelic_rpm'
