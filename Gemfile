@@ -66,8 +66,6 @@ gem 'rails_autolink'
 
 gem 'acts_as_favable'
 
-gem 'acts_as_rateable'
-
 gem 'paperclip'
 
 gem 'cancan'
