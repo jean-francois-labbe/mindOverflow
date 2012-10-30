@@ -2,6 +2,12 @@
   .posts_border
     - articles.each do |article|
       .post
+        .notations
+          .favorite
+            - if article.is_article_user_favorite(current_user)
+              .i.icon-star
+            - else
+              .i.icon-star-empty
         .content
           %h4.title
             = link_to truncate(article.title,:length => 60, :separator =>' '), article

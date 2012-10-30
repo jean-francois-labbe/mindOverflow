@@ -7,5 +7,12 @@ class Article < ActiveRecord::Base
   validates :title, :presence => true
   validates :body, :presence => true
 
+  acts_as_favable
+
+
+  def is_article_user_favorite(user)
+    Favorite.find_favorite_by_user_for_favable(user,self).any?
+  end
+
   self.per_page = 10
 end
