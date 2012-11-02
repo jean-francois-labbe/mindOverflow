@@ -2,5 +2,5 @@
   .posts_border
     - articles.each do |article|
       .post{:id =>"article_#{article.id}"}
-        = render 'article', :article => article
+        = render 'articles/article', :article => article
   = will_paginate articles

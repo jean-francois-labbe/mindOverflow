@@ -2,7 +2,7 @@ class Favorite < ActiveRecord::Base
 
   include ActsAsFavable::Favorite
 
-  attr_accessible :note, :user_id
+  attr_accessible :user_id
   belongs_to :favable, :polymorphic => true
 
   default_scope :order => 'created_at ASC'

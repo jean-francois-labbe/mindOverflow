@@ -13,5 +13,7 @@
 = link_to 'Back', users_path
 %br/
 %p
-  Published articles
+%h1 Published articles
 = render 'articles/list_articles', :articles => @articles
+%h1 Favorites
+= render 'articles/list_articles', :articles => @favorites

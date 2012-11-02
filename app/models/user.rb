@@ -11,6 +11,16 @@ class User < ActiveRecord::Base
   validates :nickname, :presence => true
 
   has_many :articles
+  has_many :favorites #, :as => :favable
 
   ROLES = %w[admin moderator author banned]
+
+  def self.favorited_articles_by(user)
+    articles = []
+    user.favorites.each do |favorite|
+      articles << favorite.favable
+    end
+    return articles
+  end
+
 end

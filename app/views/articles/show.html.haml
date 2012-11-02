@@ -18,6 +18,9 @@
     %span
       = link_to tag , {action: :tag, :id => tag}, :class => "tag tag-list"
 
+.notations
+  = render 'articles/favorite_form', :article => @article
+
 = link_to 'Edit', edit_article_path(@article)
 |
 \#{link_to 'Back', articles_path}
