@@ -1,0 +1,1 @@
+$("<%= "#article_" + @article.id.to_s %>").html("<%= escape_javascript(render('articles/article', :article => @article)) %>");

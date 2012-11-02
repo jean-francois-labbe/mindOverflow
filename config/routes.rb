@@ -9,7 +9,10 @@ MindOverflow::Application.routes.draw do
       get :tag
       get :autocomplete_tag_name
     end
+    resources :favorites, :only => [:create,:destroy]
   end
+
+  #resources :favorites, :only => [:create,:destroy]
 
   root :to => "articles#index"
 

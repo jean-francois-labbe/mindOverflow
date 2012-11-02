@@ -10,8 +10,16 @@ class Article < ActiveRecord::Base
   acts_as_favable
 
 
-  def is_article_user_favorite(user)
-    Favorite.find_favorite_by_user_for_favable(user,self).any?
+  def is_favorited_by_user?(user)
+    article_user_favorites(user).any?
+  end
+
+  def article_user_favorites(user)
+    Favorite.find_favorite_by_user_for_favable(user,self)
+  end
+
+  def favorited_by(user)
+    self.favorites.create(:user_id => user.id)
   end
 
   self.per_page = 10
