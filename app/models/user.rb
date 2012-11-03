@@ -23,4 +23,11 @@ class User < ActiveRecord::Base
     return articles
   end
 
+  after_initialize :set_default_roles
+
+  private
+    def set_default_roles
+      self.role = self.role || "author"
+    end
+
 end
