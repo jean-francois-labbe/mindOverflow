@@ -23,8 +23,9 @@
             %li.active
               = link_to 'Articles', articles_path
           %ul.nav.pull-right
-            %li.pull-right
-              = link_to 'Admin', users_path
+            - if current_user.role == "admin"
+              %li.pull-right
+                = link_to 'Admin', users_path
             %li.pull-right
               = link_to user_path(current_user) do
                 %span.avatar
