@@ -5,10 +5,9 @@
         .i.icon-star
     = link_to truncate(article.title,:length => 60, :separator =>' '), article
     %span.actions
-      %span.edit
-        = link_to '<i class="icon-edit" ></i>'.html_safe, edit_article_path(article)
-      %span.destroy
-        = link_to '<i class="icon-remove"></i>'.html_safe, article, method: :delete, data: { confirm: 'Are you sure?' }
+      - if can? :update, article
+        %span.edit
+          = link_to '<i class="icon-edit" ></i>'.html_safe, edit_article_path(article)
   .body
     = auto_link(truncate(article.body,:length => 60, :separator =>' '))
   .tags

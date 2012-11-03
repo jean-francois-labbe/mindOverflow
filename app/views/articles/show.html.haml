@@ -1,5 +1,9 @@
 %h2
   = @article.title.capitalize
+  - if can? :destroy, @article
+    %span.destroy
+      = link_to '<i class="icon-remove"></i>'.html_safe, @article,:alt => "like", method: :delete, data: { confirm: 'Are you sure?' }
+
 %p
   %b Body:
   = auto_link(@article.body, :html => { :target => '_blank' })
@@ -21,6 +25,7 @@
 .notations
   = render 'articles/favorite_form', :article => @article
 
-= link_to 'Edit', edit_article_path(@article)
-|
-\#{link_to 'Back', articles_path}
+- if can? :update, @article or current_user == @article.user
+  = link_to 'Edit', edit_article_path(@article)
+  |
+= link_to 'Back', articles_path

@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
   # GET /articles
@@ -7,6 +8,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.order("created_at DESC").paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags,:limit => 100, :order => "name desc")
+
     @article = Article.new
 
     respond_to do |format|
@@ -90,8 +92,9 @@ class ArticlesController < ApplicationController
   end
 
   def tag
-    @articles = Article.tagged_with(params[:id]).paginate(:page => params[:page])
+    @articles = Article.tagged_with(params[:tag_name]).paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags)
+
     @article = Article.new
 
     render 'index'
