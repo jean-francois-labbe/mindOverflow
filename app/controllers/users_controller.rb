@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  require 'will_paginate/array'
 
   # GET /users
   # GET /users.json
@@ -16,6 +17,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @articles = @user.articles.paginate(:page => params[:page])
+    @favorites = User.favorited_articles_by(@user).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

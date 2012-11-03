@@ -3,9 +3,12 @@
   %head
     %title MindOverflow
     = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
+    /= javascript_include_tag "application", "autocomplete-rails"
     = csrf_meta_tags
+    :javascript
+      var NREUMQ=[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);
   %body.container
+  .notice
   - if user_signed_in?
     - if alert || notice
       - text = alert || notice
@@ -21,12 +24,16 @@
               = link_to 'Articles', articles_path
           %ul.nav.pull-right
             %li.pull-right
+              = link_to 'Admin', users_path
+            %li.pull-right
               = link_to user_path(current_user) do
-                = image_tag avatar_url(current_user,24)
+                %span.avatar
+                  = image_tag avatar_url(current_user,24)
                 = current_user.nickname
             %li.pull-right
               = link_to "Sign out", destroy_user_session_path, {:method => :delete}
 
   = auto_discovery_link_tag(:atom, articles_path(:atom))
   = yield
+= javascript_include_tag "application", "autocomplete-rails"
 /  = debug(params) if Rails.env.development?

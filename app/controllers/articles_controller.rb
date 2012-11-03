@@ -1,11 +1,13 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!
+  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.paginate(:page => params[:page])
-    @tags = Article.tag_counts_on(:tags)
+    @articles = Article.order("created_at DESC").paginate(:page => params[:page])
+    @tags = Article.tag_counts_on(:tags,:limit => 100, :order => "name desc")
+    @article = Article.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,11 +47,12 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
+    @article.title = params[:article][:title].capitalize
     @article.user = current_user
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to articles_url, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
         format.html { render "new" }
@@ -65,7 +68,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to articles_url, notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render "edit" }
@@ -89,6 +92,8 @@ class ArticlesController < ApplicationController
   def tag
     @articles = Article.tagged_with(params[:id]).paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags)
+    @article = Article.new
+
     render 'index'
   end
 end

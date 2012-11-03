@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019111957) do
+ActiveRecord::Schema.define(:version => 20121030220334) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(:version => 20121019111957) do
   end
 
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
+
+  create_table "favorites", :force => true do |t|
+    t.string   "note",         :limit => 50, :default => ""
+    t.integer  "favable_id"
+    t.string   "favable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  add_index "favorites", ["favable_id"], :name => "index_favorites_on_favable_id"
+  add_index "favorites", ["favable_type"], :name => "index_favorites_on_favable_type"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -62,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20121019111957) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

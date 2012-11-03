@@ -18,5 +18,7 @@
   .field
     = f.label :email
     = f.text_field :email
+  .field
+    = f.collection_select :role, User::ROLES, :to_s, :humanize
   .actions
     = f.submit 'Save'

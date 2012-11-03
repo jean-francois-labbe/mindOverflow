@@ -1,0 +1,2 @@
+= form_for([article,article.article_user_favorites(current_user).first], html: { method: :delete },:remote => true) do |f|
+  = f.submit "Unfollow"

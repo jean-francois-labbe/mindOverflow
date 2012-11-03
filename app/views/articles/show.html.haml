@@ -1,6 +1,5 @@
-%p
-  %b Title:
-  = @article.title
+%h2
+  = @article.title.capitalize
 %p
   %b Body:
   = auto_link(@article.body, :html => { :target => '_blank' })
@@ -12,11 +11,15 @@
 %p
   - if @article.image?
     = image_tag @article.image.url(:medium)
+    = @article.image_file_name
 %p
   %b Tags:
   - @article.tag_list.each do |tag|
     %span
       = link_to tag , {action: :tag, :id => tag}, :class => "tag tag-list"
+
+.notations
+  = render 'articles/favorite_form', :article => @article
 
 = link_to 'Edit', edit_article_path(@article)
 |

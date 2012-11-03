@@ -22,6 +22,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  gem 'faker'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -51,6 +55,8 @@ group :development do
   gem 'sextant'
   gem "rails_best_practices"
   gem 'rack-mini-profiler'
+  gem 'letter_opener'
+  gem 'pry'
 end
 
 
@@ -58,8 +64,12 @@ gem 'will_paginate'
 
 gem 'rails_autolink'
 
-gem 'acts_as_favorite'
+gem 'acts_as_favable'
 
 gem 'paperclip'
 
 gem 'cancan'
+gem 'jquery-rails'
+gem 'rails3-jquery-autocomplete'
+
+gem 'newrelic_rpm'

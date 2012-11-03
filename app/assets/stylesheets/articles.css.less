@@ -8,6 +8,7 @@
 
 .right_side{
     .makeColumn(4,0);
+    float:right;
     .action{
 	margin-bottom: 10px;
     }
@@ -23,8 +24,11 @@
     .makeColumn(8,4)
 }
 
-.posts{
+.left_side{
     .makeColumn(8,0);
+}
+
+.posts{
     .post{
 	margin-bottom: 5px;
 	padding-bottom: 5px;
@@ -33,16 +37,19 @@
 	border-width: 1px;
 	.makeRow();
 	.content{
-	    .makeColumn(7,0);
+	    .makeColumn(6,0);
 	    .title{
 		font-weight: bold;
 		.actions{
 		    vertical-align: middle;
 		}
+		.favorite_icon{
+		    vertical-align: middle;
+		}
 	    }
 	}
 	.writer{
-	    .makeColumn(1,0);
+	    .makeColumn(2,0);
 	    margin:0;
 	    margin-top: 3%;
 	    display: table;
@@ -59,6 +66,11 @@
 	}
     }
 }
+
+.avatar{
+    height: 32px;
+}
+
 
 a:hover{
     text-decoration: none;
@@ -96,9 +108,9 @@ a:hover{
 }
 
 .css1 { font-size: 1.0em; }
-.css2 { font-size: 1.2em; }
-.css3 { font-size: 1.4em; }
-.css4 { font-size: 1.8em; }
+.css2 { font-size: 1.1em; }
+.css3 { font-size: 1.2em; }
+.css4 { font-size: 1.3em; }
 
 .posts_border{
     border-right-style: solid;

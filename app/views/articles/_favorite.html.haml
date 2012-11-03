@@ -1,0 +1,3 @@
+= form_for([article,article.favorites.build(:user_id => current_user.id)], :remote => true) do |f|
+  %div= f.hidden_field :user_id
+  = f.submit "follow"
