@@ -1,9 +1,9 @@
 .content
   %h4.title
-    = link_to truncate(article.title,:length => 60, :separator =>' '), article
     - if article.is_favorited_by_user?(current_user)
       %span.favorite_icon
         .i.icon-star
+    = link_to truncate(article.title,:length => 60, :separator =>' '), article
     %span.actions
       %span.edit
         = link_to '<i class="icon-edit" ></i>'.html_safe, edit_article_path(article)
