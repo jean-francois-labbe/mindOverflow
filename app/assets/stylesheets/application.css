@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap/loader
- *= require_self
  *= require_tree .
+ *= require_self
  */
 
 #wrap{
@@ -22,6 +22,10 @@
 
 html,body{
     height: 100%;
+}
+
+body{
+    background-color: whiteSmoke;
 }
 
 #push,

@@ -17,26 +17,26 @@
               %div
                 %center
                   %h4= text
-        %header
-          .navbar
-            .navbar-inner
-              = link_to 'MindOverflow', root_path, {:class => 'brand'}
-              %ul.nav
-                %li.active
-                  = link_to 'Articles', articles_path
-              %ul.nav.pull-right
-                - if current_user.role == "admin"
+          %header
+            .navbar
+              .navbar-inner
+                = link_to 'MindOverflow', root_path, {:class => 'brand'}
+                %ul.nav
+                  %li.active
+                    = link_to 'Articles', articles_path
+                %ul.nav.pull-right
+                  - if current_user.role == "admin"
+                    %li.pull-right
+                      = link_to 'Admin', users_path
                   %li.pull-right
-                    = link_to 'Admin', users_path
-                %li.pull-right
-                  = link_to user_path(current_user) do
-                    %span.avatar
-                      = image_tag avatar_url(current_user,24)
-                    = current_user.nickname
-                %li.pull-right
-                  = link_to "Sign out", destroy_user_session_path, {:method => :delete}
+                    = link_to user_path(current_user) do
+                      %span.avatar
+                        = image_tag avatar_url(current_user,24)
+                      = current_user.nickname
+                  %li.pull-right
+                    = link_to "Sign out", destroy_user_session_path, {:method => :delete}
 
-        = auto_discovery_link_tag(:atom, articles_path(:atom))
+          = auto_discovery_link_tag(:atom, articles_path(:atom))
         = yield
       #push
     #footer

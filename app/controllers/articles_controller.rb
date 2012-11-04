@@ -8,8 +8,11 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.order("created_at DESC").paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags,:limit => 100, :order => "name desc")
-    session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
-
+    if request.env['HTTP_REFERER'].include? '/users/sign_in'
+      session[:last_article_page] = articles_path
+    else
+      session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
+    end
     @article = Article.new
 
     respond_to do |format|
@@ -101,7 +104,7 @@ class ArticlesController < ApplicationController
     render 'index'
   end
 
- def favorite
+  def favorite
     @article = Article.find(params[:id])
     unless @article.is_favorited_by_user?(current_user)
       @article.favorited_by(current_user)
