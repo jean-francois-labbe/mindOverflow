@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   end
 
   def published
-    @articles = @user.articles.paginate(:page => params[:page])
+    @articles = @user.articles.order("created_at DESC").paginate(:page => params[:page])
     session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
   end
   def favorited

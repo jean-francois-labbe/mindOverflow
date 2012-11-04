@@ -15,7 +15,7 @@
   .tags
     - article.tag_list.each do |tag|
       %span.tag
-        = link_to tag.capitalize , {action: :tag, :id => tag, :controller => :articles}, :class => "tag tag-list"
+        = link_to tag.capitalize , {action: :tag, :tag_name => tag, :controller => :articles}, :class => "tag tag-list"
 
 .writer
   .align-writer
