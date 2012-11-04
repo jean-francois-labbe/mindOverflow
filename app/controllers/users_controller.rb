@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @articles = @user.articles.paginate(:page => params[:page])
     @favorites = User.favorited_articles_by(@user).paginate(:page => params[:page])
+    session[:last_article_page] = request.env['HTTP_REFERER'] || user_path(@user)
 
     respond_to do |format|
       format.html # show.html.erb

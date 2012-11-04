@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.order("created_at DESC").paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags,:limit => 100, :order => "name desc")
+    session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
 
     @article = Article.new
 

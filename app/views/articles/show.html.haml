@@ -39,4 +39,4 @@
   - if can? :update, @article or current_user == @article.user
     = link_to 'Edit', edit_article_path(@article)
     |
-  = link_to 'Back', articles_path
+  = link_to 'Back', session[:last_article_page]
