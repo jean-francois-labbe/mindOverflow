@@ -90,10 +90,10 @@ class UsersController < ApplicationController
 
   def published
     @articles = @user.articles.paginate(:page => params[:page])
+    session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
   end
   def favorited
     @favorites = User.favorited_articles_by(@user).paginate(:page => params[:page])
+    session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
   end
-
-
 end
