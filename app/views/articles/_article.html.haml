@@ -3,6 +3,8 @@
     - if article.is_favorited_by_user?(current_user)
       %span.favorite_icon
         .i.icon-star
+    %span.rate
+      = article.rate
     = link_to truncate(article.title,:length => 60, :separator =>' '), article
     %span.actions
       - if can? :update, article

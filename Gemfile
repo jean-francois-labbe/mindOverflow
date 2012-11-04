@@ -73,3 +73,5 @@ gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'
 
 gem 'newrelic_rpm'
+
+gem 'will_paginate-bootstrap'

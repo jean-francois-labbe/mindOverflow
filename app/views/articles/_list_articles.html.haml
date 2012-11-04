@@ -3,4 +3,4 @@
     - articles.each do |article|
       .post{:id =>"article_#{article.id}"}
         = render 'articles/article', :article => article
-  = will_paginate articles
+  = will_paginate articles, :renderer => BootstrapPagination::Rails
