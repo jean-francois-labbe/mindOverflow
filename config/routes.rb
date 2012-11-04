@@ -8,11 +8,20 @@ MindOverflow::Application.routes.draw do
     collection do
       get :tag
       get :autocomplete_tag_name
-    end
-    resources :favorites, :only => [:create,:destroy]
-  end
 
-  #resources :favorites, :only => [:create,:destroy]
+    end
+    member do
+      get :favorite
+      get :unfavorite
+    end
+
+    resources :rates, :only => [] do
+      collection do
+        get :minus
+        get :plus
+      end
+    end
+  end
 
   root :to => "articles#index"
 

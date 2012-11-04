@@ -1,0 +1,7 @@
+.rate_form
+  .rate_plus
+    = link_to '+1', plus_article_rates_path(@article)
+  .rating
+    = @article.rate
+  .rate_minus
+    = link_to '-1', minus_article_rates_path(@article)

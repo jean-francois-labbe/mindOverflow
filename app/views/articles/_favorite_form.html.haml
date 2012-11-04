@@ -1,10 +1,5 @@
 .favorite_form
   - if article.is_favorited_by_user?(current_user)
-    .i.icon-star
-    - favorite =  article.article_user_favorites(current_user).first
-    / = button_to 'un favorite', favorite_path(favorite) ,method: :delete
-    = render 'articles/unfavorite', :article => article
+    = link_to '<i class="icon-star" ></i>'.html_safe, unfavorite_article_path(@article)
   - else
-    .i.icon-star-empty
-    /= button_to 'favorite', favorites_path(:article_id => article)
-    = render 'articles/favorite', :article => article
+    = link_to '<i class="icon-star-empty" ></i>'.html_safe, favorite_article_path(@article)

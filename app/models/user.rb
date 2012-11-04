@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   validates :nickname, :presence => true
 
   has_many :articles
-  has_many :favorites #, :as => :favable
+  has_many :favorites
+  has_many :rates
 
   ROLES = %w[admin moderator author banned]
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030220334) do
+ActiveRecord::Schema.define(:version => 20121103220015) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20121030220334) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "rate"
   end
 
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
@@ -39,6 +40,14 @@ ActiveRecord::Schema.define(:version => 20121030220334) do
   add_index "favorites", ["favable_id"], :name => "index_favorites_on_favable_id"
   add_index "favorites", ["favable_type"], :name => "index_favorites_on_favable_type"
   add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
+
+  create_table "rates", :force => true do |t|
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

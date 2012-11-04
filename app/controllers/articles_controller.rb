@@ -99,4 +99,26 @@ class ArticlesController < ApplicationController
 
     render 'index'
   end
+
+ def favorite
+    @article = Article.find(params[:id])
+    unless @article.is_favorited_by_user?(current_user)
+      @article.favorited_by(current_user)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to article_path(@article)}
+    end
+  end
+
+  def unfavorite
+    @article = Article.find(params[:id])
+    favorite = @article.article_user_favorites(current_user).first
+    favorite.destroy
+
+    respond_to do |format|
+      format.html { redirect_to article_path(@article) }
+    end
+  end
+
 end

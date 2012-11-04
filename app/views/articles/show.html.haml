@@ -23,7 +23,10 @@
       = link_to tag , {action: :tag, :id => tag}, :class => "tag tag-list"
 
 .notations
-  = render 'articles/favorite_form', :article => @article
+  .favorite
+    = render 'articles/favorite_form', :article => @article
+  .rate
+    = render 'articles/rate_form', :article => @article
 
 - if can? :update, @article or current_user == @article.user
   = link_to 'Edit', edit_article_path(@article)

@@ -9,18 +9,18 @@
 require 'faker'
 
 User.delete_all
-user = User.new(:email => "jle@kereval.com",  :password => '1234', :nickname => "jeff")
+user = User.new(:email => "jle@kereval.com",  :password => '123456', :nickname => "jeff")
 user.save!(:validate => false)
 
-user1 = User.new(:email => "titi@toto.com",  :password => '1234', :nickname => "titi")
+user1 = User.new(:email => "titi@toto.com",  :password => '123456', :nickname => "titi")
 user1.save!(:validate => false)
 
-user2 = User.new(:email => "toto@gmail.com",  :password => 'azerty', :nickname => 'toto')
+user2 = User.new(:email => "toto@gmail.com",  :password => '123456', :nickname => 'toto')
 user2.save!(:validate => false)
 
 
 Article.delete_all
-10000.times do
+10.times do
   title = Faker::Lorem.sentence(5)
   body = Faker::Lorem.paragraphs
   if u = user1

@@ -8,6 +8,7 @@ class Article < ActiveRecord::Base
   validates :body, :presence => true
 
   acts_as_favable
+  has_many :rates, :as => :rateable
 
 
   def is_favorited_by_user?(user)
@@ -20,6 +21,16 @@ class Article < ActiveRecord::Base
 
   def favorited_by(user)
     self.favorites.create(:user_id => user.id)
+  end
+
+  def rated_by(user, rate)
+    self.rates.create(:user_id => user.id)
+    if self.rate.nil?
+      self.rate = rate
+    else
+      self.rate = self.rate + rate
+    end
+    self.save
   end
 
   self.per_page = 10
