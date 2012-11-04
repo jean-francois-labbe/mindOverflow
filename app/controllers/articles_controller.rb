@@ -124,4 +124,9 @@ class ArticlesController < ApplicationController
       format.html { redirect_to article_path(@article) }
     end
   end
+
+  def download
+    @article = Article.find(params[:id])
+    send_file @article.image.path , :type => @article.image_content_type
+  end
 end

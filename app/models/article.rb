@@ -1,9 +1,9 @@
 class Article < ActiveRecord::Base
   acts_as_taggable_on :tags
-  attr_accessible :body, :title, :tag_list, :image, :user_id
+  attr_accessible :body, :title, :tag_list, :attachment, :user_id
   belongs_to :user
   delegate :nickname, :to => :user, :prefix => true
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :attachment, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   validates :title, :presence => true
   validates :body, :presence => true
   before_save :set_rate_before_save

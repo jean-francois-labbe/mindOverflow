@@ -12,11 +12,11 @@
   .field
     = f.text_area :body, :rows => body_size,:placeholder => "Body"
   .field
-    - if article.image_file_name
-      = image_tag article.image.url(:medium)
-      %br/
-    = f.label :image, "Attach a New Image"
-    = f.file_field :image
+    - if article.attachment_file_name
+      = f.label :attachment, "Change the file <i>#{article.attachment_file_name} </i>".html_safe
+    -else
+      = f.label :attachment, "Attach a file"
+    = f.file_field :attachment
   .field
     = f.autocomplete_field :tag_list, autocomplete_tag_name_articles_path, :"data-delimiter" => ', ',:placeholder => "Tags"
   .actions
