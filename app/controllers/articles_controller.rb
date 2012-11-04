@@ -120,5 +120,4 @@ class ArticlesController < ApplicationController
       format.html { redirect_to article_path(@article) }
     end
   end
-
 end

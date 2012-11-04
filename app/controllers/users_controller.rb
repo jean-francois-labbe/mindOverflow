@@ -86,4 +86,13 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def published
+    @articles = @user.articles.paginate(:page => params[:page])
+  end
+  def favorited
+    @favorites = User.favorited_articles_by(@user).paginate(:page => params[:page])
+  end
+
+
 end

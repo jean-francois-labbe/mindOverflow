@@ -12,10 +12,9 @@
   = link_to 'Edit', edit_user_path(@user)
 
 %ul.nav.nav-tabs
-  %li.active
+  %li
     = link_to 'Published', published_user_path(@user)
-  - if @user == current_user
-    %li
-      = link_to 'Favorited', favorited_user_path(@user)
-.published_by_user
-  = render 'articles/list_articles_short', :articles => @articles
+  %li.active
+    = link_to 'Favorited', favorited_user_path(@user)
+- if @user == current_user
+  = render 'articles/list_articles_short', :articles => @favorites
