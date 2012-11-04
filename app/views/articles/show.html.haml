@@ -1,34 +1,42 @@
-%h2
-  = @article.title.capitalize
-  - if can? :destroy, @article
-    %span.destroy
-      = link_to '<i class="icon-remove"></i>'.html_safe, @article,:alt => "like", method: :delete, data: { confirm: 'Are you sure?' }
+.title_bar
+  %h2.post_title
+    = @article.title.capitalize
+    - if can? :destroy, @article
+      %span.destroy
+        = link_to '<i class="icon-remove"></i>'.html_safe, @article,:alt => "like", method: :delete, data: { confirm: 'Are you sure?' }
 
-%p
-  %b Body:
-  = auto_link(@article.body, :html => { :target => '_blank' })
+  .post_infos
+    %span.posted_at
+      = distance_of_time_in_words_to_now(@article.created_at)
+      %i by
+    %span.show_writer
+      = link_to user_path(@article.user) do
+        %span.user_name
+          = @article.user_nickname
+        %span.avatar
+          = image_tag avatar_url(@article.user,32)
+.post_section
+  .notations
+    .favorite
+      = render 'articles/favorite_form', :article => @article
+    .rate
+      = render 'articles/rate_form', :article => @article
 
-%p
-  %b Posted by:
-  = @article.user_nickname
+  .post_body
+    %p
+      = auto_link(@article.body, :html => { :target => '_blank' })
 
-%p
-  - if @article.image?
-    = image_tag @article.image.url(:medium)
-    = @article.image_file_name
-%p
-  %b Tags:
-  - @article.tag_list.each do |tag|
-    %span
-      = link_to tag , {action: :tag, :id => tag}, :class => "tag tag-list"
+  %p
+    - if @article.image?
+      = image_tag @article.image.url(:medium)
+      = @article.image_file_name
+  %p
+    - @article.tag_list.each do |tag|
+      %span
+        = link_to tag , {action: :tag, :id => tag}, :class => "tag tag-list"
 
-.notations
-  .favorite
-    = render 'articles/favorite_form', :article => @article
-  .rate
-    = render 'articles/rate_form', :article => @article
-
-- if can? :update, @article or current_user == @article.user
-  = link_to 'Edit', edit_article_path(@article)
-  |
-= link_to 'Back', articles_path
+.actions
+  - if can? :update, @article or current_user == @article.user
+    = link_to 'Edit', edit_article_path(@article)
+    |
+  = link_to 'Back', articles_path

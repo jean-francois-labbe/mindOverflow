@@ -1,20 +1,24 @@
-%p
-  = @user.first_name
-  = @user.last_name
-  %i
-    Known as:
-  = @user.nickname
-%p
-  %b Email:
-  = @user.email
+.user_name
+  %p
+    = @user.first_name
+    = @user.last_name
+    %i
+      Known as:
+      = @user.nickname
+    %span.avatar
+      = image_tag avatar_url(@user,32)
 
 - if @user == current_user and can? :update, @user
   = link_to 'Edit', edit_user_path(@user)
 
-%br/
-%p
+%ul.nav.nav-tabs
+  %li.active
+    %a Published
+  %li
+    %a Favorited
 %h1 Published articles
-= render 'articles/list_articles', :articles => @articles
+.published_by_user
+  = render 'articles/list_articles_short', :articles => @articles
 - if @user == current_user
   %h1 Favorites
-  = render 'articles/list_articles', :articles => @favorites
+  = render 'articles/list_articles_short', :articles => @favorites

@@ -1,0 +1,17 @@
+.title_bar
+  %h4.post_title
+    = link_to article.title.capitalize, article_path(article)
+    - if can? :destroy, article
+      %span.destroy
+        = link_to '<i class="icon-remove"></i>'.html_safe, article,:alt => "like", method: :delete, data: { confirm: 'Are you sure?' }
+
+  .post_infos
+    %span.posted_at
+      = distance_of_time_in_words_to_now(article.created_at)
+      %i by
+    %span.show_writer
+      = link_to user_path(article.user) do
+        %span.user_name
+          = article.user_nickname
+        %span.avatar
+          = image_tag avatar_url(article.user,32)

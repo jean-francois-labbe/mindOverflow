@@ -29,39 +29,43 @@
 }
 
 .posts{
-    .post{
-	margin-bottom: 5px;
-	padding-bottom: 5px;
-	border-bottom-style: solid;
+    .posts_border{
+	border-right-style: solid;
 	border-color: #D4D4D4;
 	border-width: 1px;
-	.makeRow();
-	.content{
-	    .makeColumn(6,0);
-	    .title{
-		font-weight: bold;
-		.actions{
-		    vertical-align: middle;
-		}
-		.favorite_icon{
-		    vertical-align: middle;
+	.post{
+	    padding-bottom: 15px;
+	    border-bottom-style: solid;
+	    border-color: #D4D4D4;
+	    border-width: 1px;
+	    .makeRow();
+	    .content{
+		.makeColumn(6,0);
+		.title{
+		    font-weight: bold;
+		    .actions{
+			vertical-align: middle;
+		    }
+		    .favorite_icon{
+			vertical-align: middle;
+		    }
 		}
 	    }
-	}
-	.writer{
-	    .makeColumn(2,0);
-	    margin:0;
-	    margin-top: 3%;
-	    display: table;
-	    .align-writer{
-		vertical-align: middle;
-		text-align: center;
-	    }
-	    .user_name{
-		margin-top: 5px;
-		width: 50%;
-		text-align: center;
-		display: inline-block;
+	    .writer{
+		.makeColumn(2,0);
+		margin:0;
+		margin-top: 1%;
+		display: table;
+		.align-writer{
+		    vertical-align: middle;
+		    text-align: center;
+		}
+		.user_name{
+		    margin-top: 5px;
+		    width: 50%;
+		    text-align: center;
+		    display: inline-block;
+		}
 	    }
 	}
     }
@@ -112,8 +116,29 @@ a:hover{
 .css3 { font-size: 1.2em; }
 .css4 { font-size: 1.3em; }
 
-.posts_border{
-    border-right-style: solid;
-    border-color: #D4D4D4;
-    border-width: 1px;
+.notations{
+    float: left;
+    padding-right: 20px;
+}
+
+.post_section{
+    clear :both;
+}
+
+.title_bar{
+    .makeRow();
+    .post_title{
+	.makeColumn(9,0);
+	.destroy{
+	    i{
+		vertical-align: middle;
+	    }
+	}
+    }
+    .post_infos{
+	.makeColumn(3,0);
+	vertical-align: middle;
+	text-align: center;
+	margin: 10px 0;
+    }
 }

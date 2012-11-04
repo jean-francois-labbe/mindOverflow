@@ -2,7 +2,12 @@ MindOverflow::Application.routes.draw do
 
   devise_for :users
 
-  resources :users
+  resources :users do
+    member do
+      get :favorited
+      get :published
+    end
+  end
 
   resources :articles do
     collection do

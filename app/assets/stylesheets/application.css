@@ -12,3 +12,27 @@
  *= require_self
  *= require_tree .
  */
+
+#wrap{
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -30px;
+}
+
+html,body{
+    height: 100%;
+}
+
+#push,
+#footer{
+    height: 30px;
+    .container{
+	border-top: 1px solid #E7E7E7;
+    }
+}
+
+.container{
+    border-top: 1px solid #E7E7E7;
+    padding-left: 40px;
+}
