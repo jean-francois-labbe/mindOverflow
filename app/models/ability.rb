@@ -6,12 +6,12 @@ class Ability
       can :manage, :all
     elsif user.role == "moderator"
       can [:read, :show,:create,:destroy,:tag, :download], Article
-      can :update, Article, :user_id => user.id
+      can [:update, :delete_attachment] , Article, :user_id => user.id
       can [:update, :favorited], User, :id => user.id
       can [:published,:show], User
     elsif user.role == "author"
       can [:read, :create, :tag, :download], Article
-      can :update, Article, :user_id => user.id
+      can [:update, :delete_attachment] , Article, :user_id => user.id
       can [:update, :favorited], User, :id => user.id
       can [:published,:show], User
     elsif user.role == "banned"

@@ -18,8 +18,9 @@ MindOverflow::Application.routes.draw do
     member do
       get :favorite
       get :unfavorite
-      get :download
+      get :download_attachment
       get :delete_attachment
+      get :open_attachment
     end
 
     resources :rates, :only => [] do

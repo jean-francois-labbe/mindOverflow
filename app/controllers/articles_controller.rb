@@ -125,10 +125,16 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def download
+  def download_attachment
     @article = Article.find(params[:id])
     send_file @article.attachment.path , :type => @article.attachment_content_type
   end
+
+  def open_attachment
+    @article = Article.find(params[:id])
+    send_file @article.attachment.path , :type => @article.attachment_content_type, :disposition => 'inline'
+  end
+
 
   def delete_attachment
     @article = Article.find(params[:id])

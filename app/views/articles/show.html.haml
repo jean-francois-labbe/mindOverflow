@@ -30,9 +30,10 @@
     - if @article.attachment?
       -if @article.attachment_content_type == 'image/jpeg'
         = image_tag @article.attachment.url(:medium)
-      = @article.attachment_file_name
-      = link_to 'Download', download_article_path(@article)
-      = link_to 'Delete', delete_attachment_article_path(@article),  data: { confirm: 'Really delete this attachment?' }
+      = link_to @article.attachment_file_name , open_attachment_article_path(@article)
+      = link_to 'Download', download_attachment_article_path(@article)
+      - if can? :delete_attachment, @article
+        = link_to 'Delete', delete_attachment_article_path(@article),  data: { confirm: 'Really delete this attachment?' }
   %p
     - @article.tag_list.each do |tag|
       %span
