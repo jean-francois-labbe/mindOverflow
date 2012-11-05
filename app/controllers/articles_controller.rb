@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.order("created_at DESC").paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags,:limit => 100, :order => "name desc")
-    if request.env['HTTP_REFERER'].include? '/users/sign_in'
+    if request.env['HTTP_REFERER'].nil? || (request.env['HTTP_REFERER'].include? '/users/sign_in')
       session[:last_article_page] = articles_path
     else
       session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
@@ -127,6 +127,14 @@ class ArticlesController < ApplicationController
 
   def download
     @article = Article.find(params[:id])
-    send_file @article.image.path , :type => @article.image_content_type
+    send_file @article.attachment.path , :type => @article.attachment_content_type
+  end
+
+  def delete_attachment
+    @article = Article.find(params[:id])
+    @article.attachment = nil
+    @article.save
+
+    redirect_to article_path(@article)
   end
 end

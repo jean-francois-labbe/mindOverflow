@@ -32,6 +32,7 @@
         = image_tag @article.attachment.url(:medium)
       = @article.attachment_file_name
       = link_to 'Download', download_article_path(@article)
+      = link_to 'Delete', delete_attachment_article_path(@article),  data: { confirm: 'Really delete this attachment?' }
   %p
     - @article.tag_list.each do |tag|
       %span

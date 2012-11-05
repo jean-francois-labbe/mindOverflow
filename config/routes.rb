@@ -19,6 +19,7 @@ MindOverflow::Application.routes.draw do
       get :favorite
       get :unfavorite
       get :download
+      get :delete_attachment
     end
 
     resources :rates, :only => [] do
