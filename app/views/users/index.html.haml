@@ -1,5 +1,9 @@
 %h1 Listing users
 
+= link_to "All Users", :action => "index"
+|
+= link_to "Users awaiting approval", :action => "index", :approved => "false"
+
 %table
   %tr
     %th Avatar
@@ -8,6 +12,7 @@
     %th Nickname
     %th Email
     %th Role
+    %th Approved
     %th
     %th
     %th
@@ -20,10 +25,13 @@
       %td= user.nickname
       %td= user.email
       %td= user.role
-      %td= link_to 'Show', user
+      %td= user.approved
       %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
-
+      %td= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }
+      - if user.approved?
+        %td= link_to 'Block', block_user_path(user)
+      -else
+        %td= link_to 'Approve', approve_user_path(user)
 %br
 
 //= link_to 'New User', new_user_path

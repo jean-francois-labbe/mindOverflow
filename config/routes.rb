@@ -6,6 +6,8 @@ MindOverflow::Application.routes.draw do
     member do
       get :favorited
       get :published
+      get :approve
+      get :block
     end
   end
 
