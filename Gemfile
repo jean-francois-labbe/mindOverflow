@@ -72,6 +72,8 @@ gem 'cancan'
 gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'
 
+gem 'will_paginate-bootstrap'
 gem 'newrelic_rpm'
 
-gem 'will_paginate-bootstrap'
+gem 'thin'
+gem 'unicorn', group: :production

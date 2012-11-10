@@ -6,7 +6,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+
+    if params[:approved] == "false"
+      @users = User.find_all_by_approved(false)
+    else
+      @users = User.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -92,8 +97,25 @@ class UsersController < ApplicationController
     @articles = @user.articles.order("created_at DESC").paginate(:page => params[:page])
     session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
   end
+
   def favorited
     @favorites = User.favorited_articles_by(@user).paginate(:page => params[:page])
     session[:last_article_page] = request.env['HTTP_REFERER'] || articles_url
+  end
+
+  def approve
+    user = User.find(params[:id])
+    user.approved = true
+    user.save
+
+    redirect_to :back
+  end
+
+  def block
+    user = User.find(params[:id])
+    user.approved = false
+    user.save
+
+    redirect_to :back
   end
 end

@@ -3,7 +3,7 @@
 # Ruby, Java, .NET, PHP, and Python applications with deep visibility and low overhead.
 # For more information, visit www.newrelic.com.
 #
-# Generated October 26, 2012
+# Generated November 08, 2012
 #
 # This configuration file is custom generated for kereval
 
@@ -33,7 +33,7 @@ common: &default_settings
   # "All UI" then specify a semicolon-separated list of up to three
   # distinct names.  If you comment this out, it defaults to the
   # capitalized RAILS_ENV (i.e., Production, Staging, etc)
-  app_name: mindOverflow
+  app_name: MindOverflow_prod
 
   # When "true", the agent collects performance data about your
   # application and reports this data to the New Relic service at
@@ -43,7 +43,7 @@ common: &default_settings
 
   # Developer mode should be off in every environment but
   # development as it has very high overhead in memory.
-  developer_mode: false
+  developer_mode: true
 
   # The newrelic agent generates its own log file to keep its logging
   # information separate from that of your application.  Specify its
@@ -164,8 +164,6 @@ common: &default_settings
   # Certain types of instrumentation such as GC stats will not work if
   # you are running multi-threaded.  Please let us know.
   # multi_threaded = false
- browser_monitoring:
-      auto_instrument: true
 
 # Application Environments
 # ------------------------------------------
@@ -183,7 +181,7 @@ development:
   # 'enabled').
   # NOTE: for initial evaluation purposes, you may want to temporarily
   # turn agent communication on in development mode.
-  monitor_mode: true
+  monitor_mode: false
 
   # Rails Only - when running in Developer Mode, the New Relic Agent will
   # present performance information on the last 100 transactions you have
