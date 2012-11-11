@@ -79,3 +79,5 @@ gem 'thin'
 gem 'unicorn', group: :production
 
 gem 'ransack'
+
+gem 'pg', :group => :postgres
