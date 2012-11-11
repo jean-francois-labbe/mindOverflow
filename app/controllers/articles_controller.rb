@@ -100,6 +100,8 @@ class ArticlesController < ApplicationController
   end
 
   def tag
+    @search = Article.search(params[:q])
+
     @articles = Article.tagged_with(params[:tag_name]).paginate(:page => params[:page])
     @tags = Article.tag_counts_on(:tags)
 
