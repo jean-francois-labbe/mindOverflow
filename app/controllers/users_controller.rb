@@ -7,10 +7,10 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
 
+    @search = User.search(params[:q])
+    @users = @search.result
     if params[:approved] == "false"
-      @users = User.find_all_by_approved(false)
-    else
-      @users = User.all
+      @users = @users.find_all_by_approved(false)
     end
 
     respond_to do |format|

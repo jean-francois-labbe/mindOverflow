@@ -77,3 +77,5 @@ gem 'newrelic_rpm'
 
 gem 'thin'
 gem 'unicorn', group: :production
+
+gem 'ransack'

@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :rates
 
+  after_initialize :set_default_roles
+
   ROLES = %w[admin moderator author banned]
 
   def self.favorited_articles_by(user)
@@ -23,8 +25,6 @@ class User < ActiveRecord::Base
     end
     return articles
   end
-
-  after_initialize :set_default_roles
 
 
   def active_for_authentication?
