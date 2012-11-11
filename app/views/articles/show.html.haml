@@ -1,46 +1,47 @@
-.title_bar
-  %h2.post_title
-    = @article.title.capitalize
-    - if can? :destroy, @article
-      %span.destroy
-        = link_to '<i class="icon-remove"></i>'.html_safe, @article,:alt => "like", method: :delete, data: { confirm: 'Are you sure?' }
+.row-fluid
+  .offset2
+    .title_bar.row-fluid
+      %h2.post_title.span5
+        = @article.title.capitalize
+        - if can? :destroy, @article
+          %span.destroy
+            = link_to '<i class="icon-remove"></i>'.html_safe, @article,:alt => "like", method: :delete, data: { confirm: 'Are you sure?' }
+      .post_infos.span5
+        %span.posted_at
+          = distance_of_time_in_words_to_now(@article.created_at)
+          ago
+          %i by
+        %span.show_writer
+          = link_to user_path(@article.user) do
+            %span.user_name
+              = @article.user_nickname
+            %span.avatar
+              = image_tag avatar_url(@article.user,32)
+    .post_section.span8
+      .notations
+        .favorite
+          = render 'articles/favorite_form', :article => @article
+        .rate
+          = render 'articles/rate_form', :article => @article
 
-  .post_infos
-    %span.posted_at
-      = distance_of_time_in_words_to_now(@article.created_at)
-      %i by
-    %span.show_writer
-      = link_to user_path(@article.user) do
-        %span.user_name
-          = @article.user_nickname
-        %span.avatar
-          = image_tag avatar_url(@article.user,32)
-.post_section
-  .notations
-    .favorite
-      = render 'articles/favorite_form', :article => @article
-    .rate
-      = render 'articles/rate_form', :article => @article
+      .post_body
+        %p
+          = auto_link(@article.body, :html => { :target => '_blank' })
 
-  .post_body
-    %p
-      = auto_link(@article.body, :html => { :target => '_blank' })
-
-  %p.attachment
-    - if @article.attachment?
-      -if @article.attachment_content_type == 'image/jpeg'
-        = image_tag @article.attachment.url(:medium)
-      = link_to @article.attachment_file_name , open_attachment_article_path(@article)
-      = link_to 'Download', download_attachment_article_path(@article)
-      - if can? :delete_attachment, @article
-        = link_to 'Delete', delete_attachment_article_path(@article),  data: { confirm: 'Really delete this attachment?' }
-  %p
-    - @article.tag_list.each do |tag|
-      %span
-        = link_to tag , {action: :tag, :tag_name => tag}, :class => "tag tag-list"
-
-.actions
-  - if can? :update, @article or current_user == @article.user
-    = link_to 'Edit', edit_article_path(@article)
-    |
-  = link_to 'Back', session[:last_article_page]
+      %p.attachment
+        - if @article.attachment?
+          -if @article.attachment_content_type == 'image/jpeg'
+            = image_tag @article.attachment.url(:medium)
+          = link_to @article.attachment_file_name , open_attachment_article_path(@article)
+          = link_to 'Download', download_attachment_article_path(@article)
+          - if can? :delete_attachment, @article
+            = link_to 'Delete', delete_attachment_article_path(@article),  data: { confirm: 'Really delete this attachment?' }
+      %p
+        - @article.tag_list.each do |tag|
+          %span
+            = link_to tag , {action: :tag, :tag_name => tag}, :class => "tag tag-list"
+      .actions
+        - if can? :update, @article or current_user == @article.user
+          = link_to '<i class="icon-edit" ></i>Edit'.html_safe, edit_article_path(@article)
+          |
+        = link_to 'Back', session[:last_article_page]

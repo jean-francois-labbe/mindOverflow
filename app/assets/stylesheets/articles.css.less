@@ -2,12 +2,7 @@
 @import "twitter/bootstrap/mixins";
 @import "twitter/bootstrap/labels-badges";
 
-.articles{
-    .makeRow();
-}
-
 .right_side{
-    .makeColumn(4,0);
     float:right;
     .action{
 	margin-bottom: 10px;
@@ -16,17 +11,6 @@
     }
 }
 
-.new-article{
-    .makeRow();
-}
-
-.new-article-form{
-    .makeColumn(8,4)
-}
-
-.left_side{
-    .makeColumn(8,0);
-}
 
 .posts{
     .posts_border{
@@ -34,13 +18,12 @@
 	border-color: #D4D4D4;
 	border-width: 1px;
 	.post{
-	    padding-bottom: 25px;
-	    border-bottom-style: solid;
-	    border-color: #D4D4D4;
-	    border-width: 1px;
-	    .makeRow();
+	    .post_borders{
+		padding-bottom: 25px;
+		border-bottom-style: solid;
+		border-color: #D4D4D4;
+		border-width: 1px;
 	    .content{
-		.makeColumn(6,0);
 		.title{
 		    font-weight: bold;
 		    .actions{
@@ -59,7 +42,6 @@
 		}
 	    }
 	    .writer{
-		.makeColumn(2,0);
 		margin:0;
 		margin-top: 1%;
 		display: table;
@@ -73,6 +55,7 @@
 		    text-align: center;
 		    display: inline-block;
 		}
+	    }
 	    }
 	}
     }
@@ -133,9 +116,7 @@ a:hover{
 }
 
 .title_bar{
-    .makeRow();
     .post_title{
-	.makeColumn(9,0);
 	.destroy{
 	    i{
 		vertical-align: middle;
@@ -143,9 +124,16 @@ a:hover{
 	}
     }
     .post_infos{
-	.makeColumn(3,0);
 	vertical-align: middle;
 	text-align: center;
 	margin: 10px 0;
     }
+}
+
+.post_short{
+    overflow: hidden;
+    border-bottom: solid;
+    border-color: #D4D4D4;
+    border-width: 1px;
+
 }

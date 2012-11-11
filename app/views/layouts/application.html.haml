@@ -9,7 +9,7 @@
       var NREUMQ=[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);
   %body
     #wrap
-      .container
+      .container-fluid
         - if user_signed_in?
           - if alert || notice
             - text = alert || notice

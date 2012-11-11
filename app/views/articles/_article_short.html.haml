@@ -1,11 +1,11 @@
 .title_bar
-  %h4.post_title
+  %h4.post_title.span10
     = link_to article.title.capitalize, article_path(article)
     - if can? :destroy, article
       %span.destroy
         = link_to '<i class="icon-remove"></i>'.html_safe, article,:alt => "like", method: :delete, data: { confirm: 'Are you sure?' }
 
-  .post_infos
+  .post_infos.span2
     %span.posted_at
       = distance_of_time_in_words_to_now(article.created_at)
       %i by

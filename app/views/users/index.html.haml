@@ -1,50 +1,52 @@
 %h1 Listing users
+.row-fluid
+  .search_form.span3
+    %h4 Search
+    = search_form_for @search do |f|
+      .field
+        =f.text_field :first_name_cont,:placeholder => "First name contains"
+      .field
+        =f.text_field :last_name_cont,:placeholder => "Last name contains"
+      .field
+        =f.text_field :nickname_cont,:placeholder => "Nickname contains"
+      .field
+        =f.text_field :email_cont,:placeholder => "Email contains"
+      .field
+        = f.collection_select :role_eq, User::ROLES, :to_s, :humanize, :prompt => true
+      .action
+        =f.submit
 
-= link_to "All Users", :action => "index"
-|
-= link_to "Users awaiting approval", :action => "index", :approved => "false"
+  .users_table.span9
 
-.search_form
-  = search_form_for @search do |f|
-    .field
-      =f.text_field :first_name_cont,:placeholder => "First name contains"
-    .field
-      =f.text_field :last_name_cont,:placeholder => "Last name contains"
-    .field
-      =f.text_field :nickname_cont,:placeholder => "Nickname contains"
-    .field
-      =f.text_field :email_cont,:placeholder => "Email contains"
-    .field
-      = f.collection_select :role_eq, User::ROLES, :to_s, :humanize, :prompt => true
-    .action
-      =f.submit
+    = link_to "All Users", :action => "index"
+    |
+    = link_to "Users awaiting approval", :action => "index", :approved => "false"
 
-.users_table
-  %table
-    %tr
-      %th Avatar
-      %th First name
-      %th Last name
-      %th Nickname
-      %th Email
-      %th Role
-      %th Approved
-      %th
-      %th
-      %th
-
-    - @users.each do |user|
+    %table
       %tr
-        %td= image_tag avatar_url(user,48)
-        %td= user.first_name
-        %td= user.last_name
-        %td= user.nickname
-        %td= user.email
-        %td= user.role
-        %td= user.approved
-        %td= link_to 'Edit', edit_user_path(user),:class => "btn btn-info"
-        - if user.approved?
-          %td= link_to 'Block', block_user_path(user),:class => "btn btn-warning"
-        -else
-          %td= link_to 'Approve', approve_user_path(user),:class => "btn btn-success"
-        %td= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-danger"
+        %th Avatar
+        %th First name
+        %th Last name
+        %th Nickname
+        %th Email
+        %th Role
+        %th Approved
+        %th
+        %th
+        %th
+
+      - @users.each do |user|
+        %tr
+          %td= image_tag avatar_url(user,48)
+          %td= user.first_name
+          %td= user.last_name
+          %td= user.nickname
+          %td= user.email
+          %td= user.role
+          %td= user.approved
+          %td= link_to 'Edit', edit_user_path(user),:class => "btn btn-info"
+          - if user.approved?
+            %td= link_to 'Block', block_user_path(user),:class => "btn btn-warning"
+          -else
+            %td= link_to 'Approve', approve_user_path(user),:class => "btn btn-success"
+          %td= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-danger"

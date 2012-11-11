@@ -1,0 +1,12 @@
+.user_name
+  %p
+    %span.avatar
+      = image_tag avatar_url(user,32)
+    = user.first_name
+    = user.last_name
+    %i
+      Known as:
+      = user.nickname
+
+    - if user == current_user and can? :update, user
+      = link_to 'Edit', edit_user_path(user), :class => "btn"

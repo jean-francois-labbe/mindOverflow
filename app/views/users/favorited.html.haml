@@ -1,20 +1,10 @@
-.user_name
-  %p
-    = @user.first_name
-    = @user.last_name
-    %i
-      Known as:
-      = @user.nickname
-    %span.avatar
-      = image_tag avatar_url(@user,32)
-
-- if @user == current_user and can? :update, @user
-  = link_to 'Edit', edit_user_path(@user)
-
-%ul.nav.nav-tabs
-  %li
-    = link_to 'Published', published_user_path(@user)
-  %li.active
-    = link_to 'Favorited', favorited_user_path(@user)
-- if @user == current_user
-  = render 'articles/list_articles_short', :articles => @favorites
+.user_show.row-fluid
+  .offset1.span10
+    = render 'user_details', :user => @user
+    %ul.nav.nav-tabs
+      %li
+        = link_to 'Published', published_user_path(@user)
+      %li.active
+        = link_to 'Favorited', favorited_user_path(@user)
+    - if @user == current_user
+      = render 'articles/list_articles_short', :articles => @favorites

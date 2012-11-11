@@ -6,7 +6,10 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order("created_at DESC").paginate(:page => params[:page])
+    @search = Article.search(params[:q])
+    @articles = @search.result
+    @articles = @articles.order("created_at DESC").paginate(:page => params[:page])
+
     @tags = Article.tag_counts_on(:tags,:limit => 100, :order => "name desc")
     if request.env['HTTP_REFERER'].nil? || (request.env['HTTP_REFERER'].include? '/users/sign_in')
       session[:last_article_page] = articles_path
@@ -47,6 +50,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
+
   end
 
   # POST /articles

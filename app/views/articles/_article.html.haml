@@ -1,4 +1,4 @@
-.content
+.content.span10
   %h4.title
     - if article.is_favorited_by_user?(current_user)
       %span.favorite_icon
@@ -6,10 +6,6 @@
     %span.rate
       = article.rate
     = link_to truncate(article.title,:length => 60, :separator =>' '), article
-    %span.actions
-      - if can? :update, article
-        %span.edit
-          = link_to '<i class="icon-edit" ></i>'.html_safe, edit_article_path(article)
   .body
     = auto_link(truncate(article.body,:length => 60, :separator =>' '))
   .tags
@@ -17,7 +13,7 @@
       %span.tag
         = link_to tag.capitalize , {action: :tag, :tag_name => tag, :controller => :articles}, :class => "tag tag-list"
 
-.writer
+.writer.span2
   .align-writer
     = link_to user_path(article.user) do
       .avatar

@@ -1,6 +1,6 @@
-.published_posts
-  .posts_border
+.published_posts.row-fluid
+  .offset1.span10
     - articles.each do |article|
-      .post{:id =>"article_#{article.id}"}
+      .post_short{:id =>"article_#{article.id}"}
         = render 'articles/article_short', :article => article
-  = will_paginate articles, :renderer => BootstrapPagination::Rails
+    = will_paginate articles, :renderer => BootstrapPagination::Rails
