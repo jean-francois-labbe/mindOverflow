@@ -2,7 +2,8 @@
   .left_side.span7.offset1
     = render 'list_articles', :articles => @articles
   .right_side.span3
-    %h4 Search
+    %h4
+      Search
     = search_form_for @search do |f|
       .field
         =f.text_field :title_cont, :placeholder => "Title contains"
@@ -10,7 +11,8 @@
         =f.submit
     - if can? :create, @article
       .new_article
-        %h4 Create an article
+        %h4
+          Create an article
           = render 'form', :article => @article, :body_size => 2
     .all_tags
       = link_to "View all articles", articles_path
