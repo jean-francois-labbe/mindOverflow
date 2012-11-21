@@ -59,5 +59,4 @@ class User < ActiveRecord::Base
       self.role = self.role || "author"
     end
   end
-
 end

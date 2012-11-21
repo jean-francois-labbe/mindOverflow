@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   delegate :nickname, :to => :user, :prefix => true
   has_attached_file :attachment, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  validates :title, :presence => true
+  validates :title, :presence => true, :uniqueness => true
   validates :body, :presence => true
   before_save :set_rate_before_save
   acts_as_favable
@@ -44,5 +44,4 @@ class Article < ActiveRecord::Base
   def set_rate_before_save
     self.rate = self.rate || 0
   end
-
 end

@@ -22,8 +22,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test do
+
+group :development, :test do
   gem 'faker'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-inotify', '~> 0.8.8'
 end
 
 gem 'jquery-rails'
