@@ -1,7 +1,9 @@
 FactoryGirl.define do
   factory :user do
-    email "johnDoe@test.com"
+    email "johnDoe@mindoverflow.com"
     nickname "john"
-    role = "author"
+    role "author"
+    password "secret"
+    password_confirmation "secret"
   end
 end

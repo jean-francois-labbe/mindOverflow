@@ -15,7 +15,7 @@ guard 'spork', cucumber: false, rspec: true, test_unit: false do
 end
 
 
-guard 'rspec', cli: '--drb --format progress --color' do
+guard 'rspec', cli: '--drb --format documentation --color' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }

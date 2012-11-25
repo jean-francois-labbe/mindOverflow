@@ -22,13 +22,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  gem 'launchy'
+  gem 'database_cleaner'
+end
+
 
 group :development, :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
   gem 'spork'
-  gem 'capybara'
-  gem 'factory_girl_rails'
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-rspec'

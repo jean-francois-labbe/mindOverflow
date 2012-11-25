@@ -60,6 +60,7 @@ GEM
     colored (1.2)
     commonjs (0.2.6)
     daemons (1.1.9)
+    database_cleaner (0.9.1)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -270,6 +271,7 @@ DEPENDENCIES
   cancan
   capybara
   coffee-rails (~> 3.2.1)
+  database_cleaner
   devise
   factory_girl_rails
   faker
@@ -279,6 +281,7 @@ DEPENDENCIES
   guard-spork
   haml-rails
   jquery-rails
+  launchy
   less-rails-bootstrap
   letter_opener
   newrelic_rpm
