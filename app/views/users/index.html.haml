@@ -46,7 +46,7 @@
           %td= user.approved
           %td= link_to 'Edit', edit_user_path(user),:class => "btn btn-info"
           - if user.approved?
-            %td= link_to 'Block', block_user_path(user),:class => "btn btn-warning"
+            %td= link_to 'Block', block_user_path(user), :class => "btn btn-warning", :id => "block_#{user.id}"
           -else
-            %td= link_to 'Approve', approve_user_path(user),:class => "btn btn-success"
+            %td= link_to 'Approve', approve_user_path(user), :class => "btn btn-success", :id => "approve_#{user.id}"
           %td= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-danger"
