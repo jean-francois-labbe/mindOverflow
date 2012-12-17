@@ -18,3 +18,4 @@ Gemfile.lock
 public/*
 /vendor/bundle
 rails_best_practices_output.html
+coverage

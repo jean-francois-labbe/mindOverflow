@@ -39,6 +39,9 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'rb-inotify', '~> 0.8.8'
+  gem 'simplecov'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 gem 'jquery-rails'

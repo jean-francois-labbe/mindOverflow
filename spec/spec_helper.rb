@@ -4,6 +4,13 @@ require 'spork'
 #require 'spork/ext/ruby-debug'
 
 Spork.prefork do
+  unless ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails' do
+      coverage_dir 'public/coverage'
+    end
+  end
+
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
@@ -18,6 +25,12 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
+  if ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails' do
+      coverage_dir 'public/coverage'
+    end
+  end
 
 end
 
@@ -29,6 +42,9 @@ end
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+
+  config.include Devise::TestHelpers, :type => :controller
+  config.extend ControllerMacros, :type => :controller
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
