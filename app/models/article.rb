@@ -27,6 +27,14 @@ class Article < ActiveRecord::Base
   acts_as_favable
   has_many :rates, :as => :rateable
 
+  self.per_page = 10
+
+
+  def  favorite_it!(current_user)
+    unless self.is_favorited_by_user?(current_user)
+      self.favorited_by(current_user)
+    end
+  end
 
   def is_favorited_by_user?(user)
     article_user_favorites(user).any?
@@ -55,8 +63,6 @@ class Article < ActiveRecord::Base
       self.save
     end
   end
-
-  self.per_page = 10
 
   def set_rate_before_save
     self.rate = self.rate || 0

@@ -50,7 +50,6 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
-
   end
 
   # POST /articles
@@ -112,9 +111,7 @@ class ArticlesController < ApplicationController
 
   def favorite
     @article = Article.find(params[:id])
-    unless @article.is_favorited_by_user?(current_user)
-      @article.favorited_by(current_user)
-    end
+    @article.favorite_it!(current_user)
 
     respond_to do |format|
       format.html { redirect_to article_path(@article)}
