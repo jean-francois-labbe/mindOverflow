@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110111057) do
+ActiveRecord::Schema.define(:version => 20121227161232) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(:version => 20121110111057) do
   add_index "favorites", ["favable_id"], :name => "index_favorites_on_favable_id"
   add_index "favorites", ["favable_type"], :name => "index_favorites_on_favable_type"
   add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
+
+  create_table "questions", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "rates", :force => true do |t|
     t.integer  "rateable_id"

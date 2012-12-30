@@ -1,5 +1,7 @@
 MindOverflow::Application.routes.draw do
 
+  resources :questions
+
   devise_for :users
 
   resources :users do

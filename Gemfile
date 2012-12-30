@@ -29,6 +29,7 @@ end
 
 
 group :development, :test do
+  gem 'meta_request'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'faker'
