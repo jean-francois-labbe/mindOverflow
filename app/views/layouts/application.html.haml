@@ -3,6 +3,7 @@
   %head
     %title MindOverflow
     = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
     /= javascript_include_tag "application", "autocomplete-rails"
     = csrf_meta_tags
     :javascript
@@ -22,8 +23,21 @@
               .navbar-inner
                 = link_to 'MindOverflow', root_path, {:class => 'brand'}
                 %ul.nav
-                  %li.active
-                    = link_to 'Articles', articles_path
+                  - if tab_class(:articles)
+                    %li.active
+                      = link_to 'Articles', articles_path
+                  - else
+                    %li
+                      = link_to 'Articles', articles_path
+
+                  - if tab_class(:questions)
+                    %li.active
+                      = link_to 'Questions', questions_path
+                  - else
+                    %li
+                      = link_to 'Questions', questions_path
+
+
                 %ul.nav.pull-right
                   - if current_user.role == "admin"
                     %li.pull-right
