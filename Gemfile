@@ -25,13 +25,13 @@ group :test do
   gem 'database_cleaner'
 end
 
+gem 'faker'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'meta_request'
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'spork'
   gem 'guard'
