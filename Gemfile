@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -76,6 +76,8 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'letter_opener'
   gem 'pry'
+  gem 'quiet_assets'
+  gem 'awesome_print'
 end
 
 
